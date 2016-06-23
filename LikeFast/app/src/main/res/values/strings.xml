@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">LikeFast</string>
+    <string name="wx_login">微信登陆</string>
+</resources>
