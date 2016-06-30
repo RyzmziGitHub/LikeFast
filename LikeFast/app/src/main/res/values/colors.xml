@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
- <color name="app_green">#0FD11B</color>
+    <color name="app_green">#0FD11B</color>
+    <color name="app_gray">#aaa</color>
+    <color name="app_bg">#80FFFFFF</color>
+    <color name="dialogplus_card_shadow">#D4D4D4</color>
+    <color name="dialogplus_black_overlay">#60000000</color>
 </resources>

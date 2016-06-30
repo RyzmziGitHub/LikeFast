@@ -1,4 +1,6 @@
 package like.ry.org.likefast.login;
+import android.view.View;
+
 import like.ry.org.likefast.R;
 import like.ry.org.likefast.base.BaseActivity;
 
@@ -25,4 +27,18 @@ public class LoginActivity extends BaseActivity {
         return R.layout.activity_login;
     }
 
+    @Override
+    protected void initListener() {
+
+    }
+
+    /**
+     * Called when a view has been clicked.
+     *
+     * @param v The view that was clicked.
+     */
+    @Override
+    public void onClick(View v) {
+
+    }
 }

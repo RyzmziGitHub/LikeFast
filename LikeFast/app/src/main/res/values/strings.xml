@@ -1,4 +1,15 @@
 <resources>
     <string name="app_name">LikeFast</string>
     <string name="wx_login">微信登陆</string>
+    <string name="wx_name">微信名称</string>
+    <string name="like_num">点赞数量</string>
+    <string name="talk_thing">说点什么吧</string>
+    <string name="okey">确定</string>
+    <string name="edit_header_icon">修改头像</string>
+    <string name="crop">截图</string>
+
+    <array name="photo_choose">
+        <item>拍照</item>
+        <item>相册</item>
+    </array>
 </resources>
