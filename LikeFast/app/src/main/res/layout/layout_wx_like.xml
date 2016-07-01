@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_friends"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="horizontal"
+    android:padding="20dp">
+
+    <ImageView
+        android:id="@+id/iv_header_icon"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="7dp"
+        android:background="@mipmap/ic_launcher" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="测试1"
+            android:textColor="#4f6283"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tv_content_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_name"
+            android:layout_marginTop="5dp"
+            android:text="仅供测试1"
+            android:textColor="#3e3e3d"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:id="@+id/iv_content_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_content_text"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+             />
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iv_content_image"
+            android:text="刚刚"
+            android:textColor="#cbcbcb"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:id="@+id/iv_message_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/iv_content_image"
+            android:background="@drawable/wx_message" />
+
+        <TextView
+            android:id="@+id/tv_star_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_time"
+            android:layout_marginLeft="3dp"
+            android:layout_marginTop="7dp"
+            android:background="@drawable/start_bg"
+            android:gravity="center_vertical"
+            android:padding="5dp"
+            android:textColor="#4f6283" />
+    </RelativeLayout>
+</LinearLayout>

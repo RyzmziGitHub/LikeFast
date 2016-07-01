@@ -7,6 +7,9 @@
     <string name="okey">确定</string>
     <string name="edit_header_icon">修改头像</string>
     <string name="crop">截图</string>
+    <string name="not_null">不能为空</string>
+    <string name="share_wx_friends">分享朋友圈</string>
+    <string name="permission_title">需要去接受</string>
 
     <array name="photo_choose">
         <item>拍照</item>

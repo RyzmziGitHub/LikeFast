@@ -1,14 +1,13 @@
 package like.ry.org.likefast.main;
-import android.os.Handler;
 import android.view.View;
 
 import like.ry.org.likefast.R;
 import like.ry.org.likefast.base.BaseActivity;
-import like.ry.org.likefast.manager.TaskManager;
-import like.ry.org.likefast.util.AppLog;
+import like.ry.org.likefast.manager.PermissionManager;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements PermissionManager.OnPermissionListenter{
 
+    private PermissionManager permissionManager;
 
     @Override
     protected void initView() {
@@ -16,8 +15,8 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-
-
+        permissionManager = new PermissionManager(this);
+        permissionManager.requestPermission(this);
     }
 
     @Override
@@ -48,5 +47,10 @@ public class MainActivity extends BaseActivity {
     @Override
     public void onClick(View v) {
 
+    }
+
+    @Override
+    public void onCancel() {
+        finish();
     }
 }

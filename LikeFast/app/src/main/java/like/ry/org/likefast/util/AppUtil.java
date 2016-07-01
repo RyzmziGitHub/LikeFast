@@ -6,12 +6,14 @@ import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.util.DisplayMetrics;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
@@ -20,6 +22,7 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.animation.Animation;
 import android.widget.AbsListView;
+import android.widget.TextView;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -181,9 +184,9 @@ public class AppUtil {
     }
 
     public static boolean saveIconForSDPath(Bitmap bitmap) {
-        File file = new File(Environment.getExternalStorageDirectory(), "wx");
+        File file = new File(Environment.getExternalStorageDirectory(), "like");
         if (!file.exists()) {
-            AppLog.i("dir:" + file.mkdir());
+            AppLog.i("dir:" + file.mkdirs());
         }
         bitmapToFile(file.getPath() + "/" + System.currentTimeMillis() + ".png", bitmap);
         return true;
@@ -241,6 +244,26 @@ public class AppUtil {
             return;
         }
         view.setVisibility(visibility);
+    }
+
+    public static Bitmap loadBitmapFromView(View view,int width,int height) {
+        view.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
+        Bitmap bitmap = Bitmap.createBitmap(view.getMeasuredWidth(), height,
+                Bitmap.Config.RGB_565);
+        Canvas canvas = new Canvas(bitmap);
+        view.layout(0, 0, view.getMeasuredWidth(), height);
+        view.draw(canvas);
+        return bitmap;
+    }
+
+    public static int getHeight(Context context, String text, float textSize, int deviceWidth) {
+        TextView textView = new TextView(context);
+        textView.setText(text);
+        textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
+        int widthMeasureSpec = View.MeasureSpec.makeMeasureSpec(deviceWidth, View.MeasureSpec.AT_MOST);
+        int heightMeasureSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+        textView.measure(widthMeasureSpec, heightMeasureSpec);
+        return textView.getMeasuredHeight();
     }
 
 }

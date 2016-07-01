@@ -11,6 +11,8 @@ import android.support.v7.app.AlertDialog;
 import java.util.ArrayList;
 import java.util.List;
 
+import like.ry.org.likefast.R;
+
 /**
  * ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
  * AUTHOR BY YB
@@ -20,7 +22,7 @@ import java.util.List;
 public class PermissionManager {
 
     private static final int REQUEST_CODE_PERMISSION = 0X001;
-
+    private OnPermissionListenter onPermissionListenter;
     Context context;
 
     public PermissionManager(Context context){
@@ -36,14 +38,15 @@ public class PermissionManager {
         return true;
     }
 
-    public void requestPermission() {
+    public void requestPermission(OnPermissionListenter onPermissionListenter) {
+        this.onPermissionListenter = onPermissionListenter;
         List<String> permissionsNeeded = new ArrayList<String>();
         final List<String> permissionsList = new ArrayList<String>();
         if (!addPermission(permissionsList, Manifest.permission.WRITE_EXTERNAL_STORAGE))
             permissionsNeeded.add("Write External Storage");
         if(permissionsList.size() > 0){
             if(permissionsNeeded.size() > 0){
-                String msg = "You need to grant access to";
+                String msg = context.getResources().getString(R.string.permission_title);
                 for(int i = 0; i< permissionsNeeded.size() ; i++){
                     String note = msg + ", "+permissionsNeeded.get(i);
                     showMessageOKCancel(note, new DialogInterface.OnClickListener() {
@@ -65,8 +68,17 @@ public class PermissionManager {
         new AlertDialog.Builder(context)
                 .setMessage(message)
                 .setPositiveButton("OK", okListener)
-                .setNegativeButton("Cancel", null)
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        onPermissionListenter.onCancel();
+                    }
+                })
                 .create()
                 .show();
+    }
+
+    public interface OnPermissionListenter{
+        void onCancel();
     }
 }
